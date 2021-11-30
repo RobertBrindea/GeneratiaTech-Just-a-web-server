@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+	<script src="utility.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oxygen">
+
+	<meta charset="utf-8">
+	<title>Test</title>
+</head>
+<body>
+	<form id = "addPost">
+		<input type="text" placeholder="Titlul Postarii" name="title" id="formTitle"> <br>
+		<input type="text" placeholder="Textul Postarii" name="text" id="formText">
+		<p>Categorie:</p>
+		<select id="formCategory">
+			<option value="Carti">Carti</option>
+			<option value="Filme">Filme</option>
+			<option value="Seriale">Seriale</option>
+			<option value="Wildcard">Altele</option>
+		</select>
+		<input type="submit" value="Posteaza!">
+	</form>
+	<div id="postContainer"></div>
+	<div id="chooseCategory">
+		<h1>Sortează după categorie:</h1>
+		<a href = "/?category=Carti"><button>Cărți</button></a>
+		<a href = "/?category=Filme"><button>Filme</button></a>
+		<a href = "/?category=Seriale"><button>Seriale</button></a>
+		<a href = "/?category=Wildcard"><button>Altele</button></a>
+	</div>
+	<script defer>
+		const urlParams = new URLSearchParams(window.location.search);
+		makeDbRequest(urlParams.get('id'), urlParams.get('category'));
+	</script>
+
+</body>
+</html>
